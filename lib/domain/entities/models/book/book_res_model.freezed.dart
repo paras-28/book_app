@@ -21,12 +21,19 @@ BookResModel _$BookResModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BookResModel {
   int? get number => throw _privateConstructorUsedError;
+
   String? get title => throw _privateConstructorUsedError;
+
   String? get originalTitle => throw _privateConstructorUsedError;
+
   String? get releaseDate => throw _privateConstructorUsedError;
+
   String? get description => throw _privateConstructorUsedError;
+
   int? get pages => throw _privateConstructorUsedError;
+
   String? get cover => throw _privateConstructorUsedError;
+
   int? get index => throw _privateConstructorUsedError;
 
   /// Serializes this BookResModel to a JSON map.
@@ -44,6 +51,7 @@ abstract class $BookResModelCopyWith<$Res> {
   factory $BookResModelCopyWith(
           BookResModel value, $Res Function(BookResModel) then) =
       _$BookResModelCopyWithImpl<$Res, BookResModel>;
+
   @useResult
   $Res call(
       {int? number,
@@ -63,6 +71,7 @@ class _$BookResModelCopyWithImpl<$Res, $Val extends BookResModel>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -123,6 +132,7 @@ abstract class _$$BookResModelImplCopyWith<$Res>
   factory _$$BookResModelImplCopyWith(
           _$BookResModelImpl value, $Res Function(_$BookResModelImpl) then) =
       __$$BookResModelImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -288,18 +298,25 @@ abstract class _BookResModel implements BookResModel {
 
   @override
   int? get number;
+
   @override
   String? get title;
+
   @override
   String? get originalTitle;
+
   @override
   String? get releaseDate;
+
   @override
   String? get description;
+
   @override
   int? get pages;
+
   @override
   String? get cover;
+
   @override
   int? get index;
 

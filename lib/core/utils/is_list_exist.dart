@@ -8,7 +8,6 @@ bool isListExist<T>(Iterable<T>? values) {
   }
 }
 
-
 checkListLength<T>(Iterable<T>? values, {String? tag = "BEFORE"}) {
   if (values == null || values.isEmpty) {
     debuggerAdvance(

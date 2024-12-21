@@ -9,12 +9,11 @@ class ErrorView extends StatelessWidget {
   final Function()? onRetry;
 
   const ErrorView(
-      {Key? key,
-        required this.message,
-        this.onRetry,
-        this.height,
-        this.color = Colors.transparent})
-      : super(key: key);
+      {super.key,
+      required this.message,
+      this.onRetry,
+      this.height,
+      this.color = Colors.transparent});
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +26,17 @@ class ErrorView extends StatelessWidget {
       child: Builder(
         builder: (context) {
           if (message.toString() == "Internal Server Error") {
-
             /// Can customize  widget as per the message
             return const TextView(
               title: "Internal Server Error !!",
               maxLine: 5,
-              padding: EdgeInsets.symmetric(
-                  horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20),
             );
-          }  else {
+          } else {
             return TextView(
               title: message,
               maxLine: 5,
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
             );
           }
         },

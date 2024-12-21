@@ -1,19 +1,8 @@
+class AppStrings {
+  static const String bookApp = "Book App";
+  static const String details = "Details";
+  static const String noInternetConnection = "No Internet Connection";
 
-
-class AppStrings
-{
- static const String addEvent = "Add event";
- static const String updateEvent = "Update event";
- static const String title = "Title";
- static const String description = "Description";
- static const String eventDate = "Event Date";
- static const String save = "Save";
- static const String bookApp = "Book App";
- static const String deleteSuccessfully = "Delete Successfully";
-}
-
-
-class AppDatabaseStrings
-{
- static const String events = "events";
+  // tags
+  static const String heroTag = "hero_tag";
 }

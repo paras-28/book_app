@@ -1,6 +1,4 @@
-
 import 'package:dio/dio.dart';
-
 
 /*class ConnectionException extends DioError {
   final Response response;
@@ -18,14 +16,15 @@ class CustomException extends DioException {
 class ConnectionException extends DioException {
   ConnectionException({required super.requestOptions});
 }
+
 class InternalServerException extends DioException {
   InternalServerException({required super.requestOptions});
 }
+
 class UnAuthorizedException extends DioException {
   UnAuthorizedException({required super.requestOptions});
 }
+
 class BadRequestException extends DioException {
   BadRequestException({required super.requestOptions});
 }
-
-

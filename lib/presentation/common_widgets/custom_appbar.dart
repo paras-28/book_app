@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 
 import '../../core/utils/app_colors.dart';
 
-
-
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String? keyName;
@@ -40,7 +38,6 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     this.fontFamily,
     this.bottomWidget,
   });
-
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,3 @@
-
 import 'package:book_app/core/utils/app_colors.dart';
 import 'package:book_app/presentation/common_widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
@@ -20,20 +19,19 @@ class AppButton extends StatelessWidget {
 
   const AppButton(
       {super.key,
-        this.height = 48,
-        this.width = double.infinity,
-        required this.title,
-        this.margin =
-         EdgeInsets.zero,
-        this.padding =  EdgeInsets.zero,
-        required this.onPressed,
-        this.buttonBackgroundColor = AppColors.primaryColor,
-        this.child,
-        this.borderRadius = 6.0,
-        this.textFontSize = 16,
-        this.textColor = Colors.white,
-        this.textFontFamily,
-        this.fontWeight = FontWeight.w600});
+      this.height = 48,
+      this.width = double.infinity,
+      required this.title,
+      this.margin = EdgeInsets.zero,
+      this.padding = EdgeInsets.zero,
+      required this.onPressed,
+      this.buttonBackgroundColor = AppColors.primaryColor,
+      this.child,
+      this.borderRadius = 6.0,
+      this.textFontSize = 16,
+      this.textColor = Colors.white,
+      this.textFontFamily,
+      this.fontWeight = FontWeight.w600});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class AppButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: buttonBackgroundColor ,
+          backgroundColor: buttonBackgroundColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius!)),
         ),

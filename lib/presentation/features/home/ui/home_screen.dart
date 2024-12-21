@@ -1,6 +1,6 @@
 import 'package:book_app/config/routes/routes.dart';
 import 'package:book_app/core/utils/utils.dart';
-import 'package:book_app/data/data_utility/data_utility.dart';
+import 'package:book_app/data/data_utility/exceptions_string_constants.dart';
 import 'package:book_app/domain/entities/models/book/book_res_model.dart';
 import 'package:book_app/presentation/common_widgets/common_widgets.dart';
 import 'package:book_app/presentation/features/home/controller/home_screen_controller.dart';
@@ -13,67 +13,132 @@ class HomeScreen extends ConsumerStatefulWidget {
 
   @override
   ConsumerState createState() => _HomeScreenState();
-
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     final homePageStateNotifier = ref.watch(homepageProvider);
 
     return Scaffold(
-      appBar: const CustomAppbar(title: AppStrings.bookApp,
+      appBar: const CustomAppbar(
+        title: AppStrings.bookApp,
         hasArrow: false,
       ),
-      body: Center(
-        child: homePageStateNotifier.when(
-            data: (final valueOrNull) => valueOrNull.isEmpty ? const ErrorView(
-              message: ExceptionStrings.noDataAvailable,
-            ) :
-            Center(
-              child: SizedBox(
-                width: Responsive.setWidthByPercentage(85),
-                child: ListView.separated(
-                    separatorBuilder: (context, index) => const Divider(),
-                    itemCount: homePageStateNotifier.valueOrNull!.length,
-                    itemBuilder: (BuildContext context, int index) {BookResModel eventModel = homePageStateNotifier.valueOrNull![index];
-                   return    ListTile(
-                     isThreeLine: false,
-                     contentPadding: const  EdgeInsets.symmetric(  vertical: 6) +  const  EdgeInsets.only(left: 15, right: 10),
-                     onTap: ()
-                     {
-                       context.goNamed(AppRoutesName.setEventScreen,
-                           extra: {
-                             "event" : eventModel
-                           });
-                     },
-                     leading: TextView(title: "${index + 1}.",
-                     ),
-                     title: TextView(
-                     title:   eventModel.title ?? '',
-                       style: AppTextStyle.eventTitleStyle,
+      body: ConnectivityWrapper(
+        child: Center(
+          child: homePageStateNotifier.when(
+              data: (final valueOrNull) => valueOrNull.isEmpty
+                  ? const ErrorView(
+                      message: ExceptionStrings.noDataAvailable,
+                    )
+                  : Center(
+                      child: SizedBox(
+                        width: Responsive.setWidthByPercentage(90),
+                        child: ListView.separated(
+                            padding: EdgeInsets.zero,
+                            separatorBuilder: (context, index) {
+                              return Divider();
+                            },
+                            itemCount:
+                                homePageStateNotifier.valueOrNull!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              BookResModel bookResModel =
+                                  homePageStateNotifier.valueOrNull![index];
+                              return _ItemView(
+                                bookResModel: bookResModel,
+                                index: index + 1,
+                              );
+                            }),
+                      ),
+                    ),
+              error: (e, s) => ErrorView(message: e.toString()),
+              loading: () => const CustomLoader()),
+        ),
+      ),
+    );
+  }
+}
 
-                     ),
-                     // subtitle: TextView(
-                     //   title:   eventModel.description ?? '',
-                     //   maxLine: 2,
-                     //   overflow: TextOverflow.ellipsis,
-                     //   style: AppTextStyle.eventDescriptionStyle,
-                     //
-                     // ),
-                     dense: true,
+class _ItemView extends StatelessWidget {
+  final BookResModel bookResModel;
+  final int index;
 
-                          );
-                    }),
+  const _ItemView({super.key, required this.bookResModel, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    Responsive.size = MediaQuery.sizeOf(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: () {
+          context.goNamed(AppRoutesName.homeDetail,
+              extra: {AppRouteStringConstant.bookResponseModel: bookResModel});
+        },
+        child: Row(
+          children: [
+            TextView(
+              title: index.toString() ?? '',
+              style: AppTextStyle.imageTitle,
+              margin: EdgeInsets.only(right: 8),
+            ),
+            Hero(
+              tag: AppStrings.heroTag + bookResModel.cover.toString(),
+              child: NetworkCacheImage(
+                height: Responsive.setHeightByPercentage(15),
+                width: Responsive.setWidthByPercentage(24),
+                imageUrl: bookResModel.cover ?? '',
+                boxFit: BoxFit.fill,
+                placeholder: (context, image) {
+                  return ImagePlaceHolder(
+                    imagePath: AppAssets.bookPlaceHolder,
+                    imageHeightPercentage: 0.7,
+                    imageWidthPercentage: 0.7,
+                  );
+                },
+                errorWidget: (context, image, e) {
+                  return ImagePlaceHolder(
+                    imagePath: AppAssets.bookPlaceHolder,
+                    imageHeightPercentage: 0.7,
+                    imageWidthPercentage: 0.7,
+                  );
+                },
+                margin: EdgeInsets.only(right: 12),
               ),
             ),
-            error: (e, s) =>  ErrorView(
-              message: e.toString()
-            ) ,
-            loading: () => const CustomLoader()),
+            Expanded(
+              child: LayoutBuilder(builder: (context, constraint) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      bookResModel.title ?? '',
+                      style: AppTextStyle.imageTitle,
+                      maxLines: 2,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 6),
+                      child: SizedBox(
+                        width: Responsive.setWidthByPercentageOFThisWidth(
+                            percent: 70, width: constraint.maxWidth),
+                        child: Text(
+                          bookResModel.description ?? '',
+                          style: AppTextStyle.subTitle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }),
+            )
+          ],
+        ),
       ),
-        );
+    );
   }
-
 }

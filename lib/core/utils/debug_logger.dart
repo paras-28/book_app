@@ -16,8 +16,8 @@ enum DebugType {
 
 debuggerAdvance(
     {required String tag,
-      required dynamic value,
-      DebugType type = DebugType.info}) {
+    required dynamic value,
+    DebugType type = DebugType.info}) {
   switch (type) {
     case DebugType.statusCode:
       {
@@ -85,8 +85,8 @@ printAPIRes({
 
 printRequestModel(
     {required String tag,
-      required dynamic requestModel,
-      DebugType debugType = DebugType.info}) {
+    required dynamic requestModel,
+    DebugType debugType = DebugType.info}) {
   debugPrint('\x1B[35m${"⚓ Request Model $tag: "}\x1B[0m');
   JsonEncoder encoder = const JsonEncoder.withIndent('  ');
   String prettyprint = encoder.convert(requestModel);

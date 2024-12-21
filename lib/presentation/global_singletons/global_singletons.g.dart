@@ -22,6 +22,7 @@ final dioSingletonProvider = Provider<dio.Dio>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef DioSingletonRef = ProviderRef<dio.Dio>;
+
 String _$getAllBooksUseCaseHash() =>
     r'cdf95d1019a83f44f644d6225da9c6afe50901b0';
 

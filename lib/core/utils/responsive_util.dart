@@ -32,12 +32,25 @@ class Responsive {
   static isSmallDevice() {
     return size.height < 675;
   }
-static isMobile() {
+
+  static isMobile() {
     return size.width < 400;
   }
 
   static printDimensions() {
     debuggerAdvance(tag: "Device Height", value: size.height);
     debuggerAdvance(tag: "Device Width", value: size.width);
+  }
+
+  static double setHeightByPercentageOFThisHeight(
+      {required num percent, required num height}) {
+    double percentage = percent.roundToDouble() / 100;
+    return height * percentage;
+  }
+
+  static double setWidthByPercentageOFThisWidth(
+      {required num percent, required num width}) {
+    double percentage = (percent).roundToDouble() / 100;
+    return width * percentage;
   }
 }

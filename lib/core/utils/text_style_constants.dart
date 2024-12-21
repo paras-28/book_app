@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 
 //Info  get FontSize fontWeight color
 class AppTextStyle {
-  static const FontWeight boldFontWeight = FontWeight.w600;
+  static const FontWeight semiBoldFontWeight = FontWeight.w600;
   static const FontWeight mediumFontWeight = FontWeight.w500;
   static const FontWeight regularFontWeight = FontWeight.w400;
 
+  static TextStyle imageTitle = TextStyle(
+    fontWeight: semiBoldFontWeight,
+    fontSize: 16,
+    overflow: TextOverflow.ellipsis,
+  );
 
+  static TextStyle imageOverlapTitle = TextStyle(
+    fontWeight: semiBoldFontWeight,
+    fontSize: 32,
+    overflow: TextOverflow.ellipsis,
+  );
 
-  static const TextStyle eventTitleStyle =  TextStyle(
-  color: Colors.black,
-  fontSize: 16,
-  fontFamily: '',
-  fontWeight: boldFontWeight);
-
-
-  static const TextStyle eventDescriptionStyle =  TextStyle(
-  color: Colors.grey,
-  fontSize: 12,
-  fontFamily: '',
-  fontWeight: regularFontWeight);
-
+  static TextStyle subTitle = TextStyle(
+    fontWeight: regularFontWeight,
+    fontSize: 12,
+    overflow: TextOverflow.ellipsis,
+  );
 }

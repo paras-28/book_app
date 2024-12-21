@@ -1,7 +1,6 @@
 import 'package:book_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomLoader extends StatefulWidget {
   final int numberOfDots;
 
@@ -12,7 +11,8 @@ class CustomLoader extends StatefulWidget {
   _JumpingDotsState createState() => _JumpingDotsState();
 }
 
-class _JumpingDotsState extends State<CustomLoader> with TickerProviderStateMixin {
+class _JumpingDotsState extends State<CustomLoader>
+    with TickerProviderStateMixin {
   late List<AnimationController> _animationControllers;
 
   final List<Animation<double>> _animations = [];
@@ -30,7 +30,7 @@ class _JumpingDotsState extends State<CustomLoader> with TickerProviderStateMixi
     ///each _animationController will have same animation duration
     _animationControllers = List.generate(
       widget.numberOfDots,
-          (index) {
+      (index) {
         return AnimationController(
             vsync: this, duration: Duration(milliseconds: animationDuration));
       },
@@ -117,8 +117,7 @@ class DotWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: AppColors.primaryColor),
+          shape: BoxShape.circle, color: AppColors.primaryColor),
       // shape: BoxShape.circle, color: ColorConst.textGreenColor),
       height: 10,
       width: 10,

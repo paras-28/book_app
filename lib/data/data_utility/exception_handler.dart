@@ -4,14 +4,12 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class DioExceptions implements Exception {
   static late String message;
   static int statusCode = -1;
 
   DioExceptions.fromDioError(
-      {required DioException dioError,
-        required String? errorFrom}) {
+      {required DioException dioError, required String? errorFrom}) {
     //This will print error is Json format and colorful
     _prettyPrintError(dioError: dioError, errorFrom: errorFrom);
     switch (dioError.type) {
@@ -37,10 +35,10 @@ class DioExceptions implements Exception {
       case DioExceptionType.connectionError:
         message = 'ConnectionError';
         break;
-        case DioExceptionType.badCertificate:
+      case DioExceptionType.badCertificate:
         message = 'BadCertificate';
         break;
-        case DioExceptionType.unknown:
+      case DioExceptionType.unknown:
         message = 'Unknown Error';
         break;
       default:
@@ -78,16 +76,13 @@ class DioExceptions implements Exception {
         '\x1B[31m${"********************************************************"}\x1B[0m');
     debugPrint('\x1B[31m${"🚨 ERROR exception from: $errorFrom"}\x1B[0m');
     debugPrint('\x1B[31m${"🚨 ERROR exception from: $dioError"}\x1B[0m');
-    if(dioError.response?.realUri != null)
-      {
-        debugPrint(
-            '\x1B[31m${"🚨 ERROR it's URL : ${Uri.decodeFull(
-                dioError.response!.realUri.toString())}"}\x1B[0m');
-      }
+    if (dioError.response?.realUri != null) {
+      debugPrint(
+          '\x1B[31m${"🚨 ERROR it's URL : ${Uri.decodeFull(dioError.response!.realUri.toString())}"}\x1B[0m');
+    }
 
     debugPrint(
-        '\x1B[31m${"🚨 ERROR it's status Code : ${dioError.response
-            ?.statusCode ?? -1}"}\x1B[0m');
+        '\x1B[31m${"🚨 ERROR it's status Code : ${dioError.response?.statusCode ?? -1}"}\x1B[0m');
     try {
       JsonEncoder encoder = const JsonEncoder.withIndent('  ');
       String prettyprint = encoder.convert(dioError.response?.data ?? '');

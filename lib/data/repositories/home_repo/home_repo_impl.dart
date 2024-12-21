@@ -1,14 +1,12 @@
-import 'package:dio/dio.dart' as dio;
-import 'package:book_app/core/utils/debug_logger.dart';
 import 'package:book_app/core/utils/is_list_exist.dart';
 import 'package:book_app/data/data_utility/data_utility.dart';
 import 'package:book_app/domain/entities/models/book/book_res_model.dart';
 import 'package:book_app/domain/repositories/home_repo/home_repo.dart';
+import 'package:dio/dio.dart' as dio;
 
 import '../../rest_client/dio_base.dart';
 
-class HomeRepoImpl implements HomeRepo
-{
+class HomeRepoImpl implements HomeRepo {
   late dio.Dio dioInst;
 
   HomeRepoImpl(this.dioInst);
@@ -19,9 +17,10 @@ class HomeRepoImpl implements HomeRepo
     // dio.BaseOptions options = dioInst.options;
     // dioInst.options = options;
     try {
-
-      var response = await DioClient(dioInst)
-          .get(url: ApiEndPoints.books, uniqueKey: "fetchAllBooks",);
+      var response = await DioClient(dioInst).get(
+        url: ApiEndPoints.books,
+        uniqueKey: "fetchAllBooks",
+      );
       List? list = response.data as List?;
       if (isListExist(list)) {
         return List<BookResModel>.from(
@@ -30,9 +29,7 @@ class HomeRepoImpl implements HomeRepo
         return [];
       }
     } on dio.DioException catch (e) {
-
-      throw DioExceptions.fromDioError(
-          dioError: e, errorFrom: "fetchAllEvents")
+      throw DioExceptions.fromDioError(dioError: e, errorFrom: "fetchAllEvents")
           .errorMessage();
       // if you want to customize the error message
       //  int statusCode =  DioExceptions.fromDioError(dioError: e, errorFrom: "getContentForHomeScreen").errorStatusCode();
@@ -44,7 +41,4 @@ class HomeRepoImpl implements HomeRepo
       rethrow;
     }
   }
-
-
-
 }

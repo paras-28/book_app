@@ -1,8 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:book_app/core/utils/debug_logger.dart';
-
-
-
+import 'package:dio/dio.dart';
 
 class DioClient {
   // final String baseUrl;
@@ -25,11 +22,8 @@ class DioClient {
 
   }*/
 
-  DioClient(
-      this._dio
-      )
-  {
-    debuggerAdvance(tag: "Dio info", value:' ${_dio.options.baseUrl}' );
+  DioClient(this._dio) {
+    debuggerAdvance(tag: "Dio info", value: ' ${_dio.options.baseUrl}');
   }
 
   // Get:-----------------------------------------------------------------------
@@ -37,7 +31,7 @@ class DioClient {
     required String url,
     required String uniqueKey,
     Map<String, dynamic>? queryParameters,
-   Options? options,
+    Options? options,
     CancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
   }) async {
@@ -50,7 +44,7 @@ class DioClient {
       final Response response = await _dio.get(
         url,
         queryParameters: queryParameters,
-        options: options ,
+        options: options,
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
@@ -63,110 +57,106 @@ class DioClient {
       return response;
     } on DioException catch (e) {
       rethrow;
-
-    }
-  }
-    // Post:----------------------------------------------------------------------
-    Future<Response> post({
-      required String url,
-      required String uniqueKey,
-      data,
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-      ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress,
-    }) async {
-      try {
-        debuggerAdvance(tag: uniqueKey, value: url, type: DebugType.url);
-        final Response response = await _dio.post(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-          onSendProgress: onSendProgress,
-          onReceiveProgress: onReceiveProgress,
-        );
-        printAPIRes(
-          url: response.realUri,
-          response: response.data,
-          statusCode: response.statusCode ?? -1,
-          tag: uniqueKey,
-        );
-        return response;
-      } catch (e) {
-        rethrow;
-      }
-    }
-
-    // Put:-----------------------------------------------------------------------
-    Future<Response> put({
-      required String url,
-      required String uniqueKey,
-      data,
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-      ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress,
-    }) async {
-      try {
-        debuggerAdvance(tag: uniqueKey, value: url, type: DebugType.url);
-        final Response response = await _dio.put(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-          onSendProgress: onSendProgress,
-          onReceiveProgress: onReceiveProgress,
-        );
-        printAPIRes(
-          url: response.realUri,
-          response: response.data,
-          statusCode: response.statusCode ?? -1,
-          tag: uniqueKey,
-        );
-        return response;
-      } catch (e) {
-        rethrow;
-      }
-    }
-
-    // Delete:--------------------------------------------------------------------
-    Future<dynamic> delete({
-      required String url,
-      required String uniqueKey,
-      data,
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-      ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress,
-    }) async {
-      try {
-        debuggerAdvance(
-            tag: uniqueKey,
-            value: url,
-            type: DebugType.url);
-        final Response response = await _dio.delete(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-        );
-        printAPIRes(
-          url: response.realUri,
-          response: response.data,
-          statusCode: response.statusCode ?? -1,
-          tag: uniqueKey,
-        );
-        return response;
-      } catch (e) {
-        rethrow;
-      }
     }
   }
 
+  // Post:----------------------------------------------------------------------
+  Future<Response> post({
+    required String url,
+    required String uniqueKey,
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      debuggerAdvance(tag: uniqueKey, value: url, type: DebugType.url);
+      final Response response = await _dio.post(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      printAPIRes(
+        url: response.realUri,
+        response: response.data,
+        statusCode: response.statusCode ?? -1,
+        tag: uniqueKey,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // Put:-----------------------------------------------------------------------
+  Future<Response> put({
+    required String url,
+    required String uniqueKey,
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      debuggerAdvance(tag: uniqueKey, value: url, type: DebugType.url);
+      final Response response = await _dio.put(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      printAPIRes(
+        url: response.realUri,
+        response: response.data,
+        statusCode: response.statusCode ?? -1,
+        tag: uniqueKey,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // Delete:--------------------------------------------------------------------
+  Future<dynamic> delete({
+    required String url,
+    required String uniqueKey,
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      debuggerAdvance(tag: uniqueKey, value: url, type: DebugType.url);
+      final Response response = await _dio.delete(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+      printAPIRes(
+        url: response.realUri,
+        response: response.data,
+        statusCode: response.statusCode ?? -1,
+        tag: uniqueKey,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
