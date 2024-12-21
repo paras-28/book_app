@@ -13,7 +13,7 @@ class BookResModel with _$BookResModel {
         required String? originalTitle,
         required String? releaseDate,
         required String? description,
-        required String? pages,
+        required int? pages,
         required String? cover,
         required int? index}) =_BookResModel;
 

@@ -19,28 +19,11 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final homePageStateNotifier = ref.watch(homepageProvider);
 
-
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-
-        context.goNamed(AppRoutesName.setEventScreen);
-      },
-        backgroundColor: AppColors.primaryColor,
-        child: const Icon(Icons.add,
-        size: 22,
-          color: Colors.white,
-        ),
-      
-      ),
-      appBar: const CustomAppbar(title: AppStrings.eventy,
+      appBar: const CustomAppbar(title: AppStrings.bookApp,
         hasArrow: false,
       ),
       body: Center(
@@ -48,7 +31,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             data: (final valueOrNull) => valueOrNull.isEmpty ? const ErrorView(
               message: ExceptionStrings.noDataAvailable,
             ) :
-
             Center(
               child: SizedBox(
                 width: Responsive.setWidthByPercentage(85),

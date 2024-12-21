@@ -8,7 +8,7 @@ class AppStrings
  static const String description = "Description";
  static const String eventDate = "Event Date";
  static const String save = "Save";
- static const String eventy = "Eventy";
+ static const String bookApp = "Book App";
  static const String deleteSuccessfully = "Delete Successfully";
 }
 

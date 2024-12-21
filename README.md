@@ -23,3 +23,5 @@ https://github.com/fedeperin/potterapi?ref=public_apis&utm_medium=website
 
 In order to run the project :- 
 dart run flutter_native_splash:create
+
+dart run build_runner build --delete-conflicting-outputs

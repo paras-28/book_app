@@ -25,7 +25,7 @@ mixin _$BookResModel {
   String? get originalTitle => throw _privateConstructorUsedError;
   String? get releaseDate => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get pages => throw _privateConstructorUsedError;
+  int? get pages => throw _privateConstructorUsedError;
   String? get cover => throw _privateConstructorUsedError;
   int? get index => throw _privateConstructorUsedError;
 
@@ -51,7 +51,7 @@ abstract class $BookResModelCopyWith<$Res> {
       String? originalTitle,
       String? releaseDate,
       String? description,
-      String? pages,
+      int? pages,
       String? cover,
       int? index});
 }
@@ -104,7 +104,7 @@ class _$BookResModelCopyWithImpl<$Res, $Val extends BookResModel>
       pages: freezed == pages
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       cover: freezed == cover
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ abstract class _$$BookResModelImplCopyWith<$Res>
       String? originalTitle,
       String? releaseDate,
       String? description,
-      String? pages,
+      int? pages,
       String? cover,
       int? index});
 }
@@ -182,7 +182,7 @@ class __$$BookResModelImplCopyWithImpl<$Res>
       pages: freezed == pages
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       cover: freezed == cover
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
@@ -222,7 +222,7 @@ class _$BookResModelImpl implements _BookResModel {
   @override
   final String? description;
   @override
-  final String? pages;
+  final int? pages;
   @override
   final String? cover;
   @override
@@ -279,7 +279,7 @@ abstract class _BookResModel implements BookResModel {
       required final String? originalTitle,
       required final String? releaseDate,
       required final String? description,
-      required final String? pages,
+      required final int? pages,
       required final String? cover,
       required final int? index}) = _$BookResModelImpl;
 
@@ -297,7 +297,7 @@ abstract class _BookResModel implements BookResModel {
   @override
   String? get description;
   @override
-  String? get pages;
+  int? get pages;
   @override
   String? get cover;
   @override

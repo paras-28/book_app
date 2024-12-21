@@ -14,8 +14,8 @@ Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+  // we can create singleton of future instance here
   FlutterNativeSplash.remove();
-
   final container  = ProviderContainer();
   runApp(UncontrolledProviderScope(container: container, child: MyApp()));
 
@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Responsive.size = MediaQuery.sizeOf(context);
     return MaterialApp.router(
-      title: 'Book_app',
+      title: 'Book App',
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.routers,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
     );

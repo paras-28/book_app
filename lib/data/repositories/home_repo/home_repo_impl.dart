@@ -21,7 +21,7 @@ class HomeRepoImpl implements HomeRepo
     try {
 
       var response = await DioClient(dioInst)
-          .get(url: ApiEndPoints.event, uniqueKey: "fetchAllEvents",);
+          .get(url: ApiEndPoints.books, uniqueKey: "fetchAllBooks",);
       List? list = response.data as List?;
       if (isListExist(list)) {
         return List<BookResModel>.from(

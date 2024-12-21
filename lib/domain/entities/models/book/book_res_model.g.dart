@@ -13,7 +13,7 @@ _$BookResModelImpl _$$BookResModelImplFromJson(Map<String, dynamic> json) =>
       originalTitle: json['originalTitle'] as String?,
       releaseDate: json['releaseDate'] as String?,
       description: json['description'] as String?,
-      pages: json['pages'] as String?,
+      pages: (json['pages'] as num?)?.toInt(),
       cover: json['cover'] as String?,
       index: (json['index'] as num?)?.toInt(),
     );
