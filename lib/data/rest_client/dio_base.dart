@@ -5,7 +5,7 @@ class DioClient {
   // final String baseUrl;
 
   //Info Approach 1
-  late Dio _dio;
+  late final  Dio _dio;
 
   // final List<Interceptor> interceptors;
 

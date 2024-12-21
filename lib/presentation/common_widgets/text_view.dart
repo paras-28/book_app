@@ -81,12 +81,7 @@ class TextView extends StatelessWidget {
                   padding: padding!,
                   child: AutoSizeText(
                     minFontSize: minFontSize,
-                    title
-                        .replaceAll("<p>", "")
-                        .replaceAll("</p>", "")
-                        .replaceAll('<p style=\"text-align: left;\">', '')
-                        .replaceAll("</strong>", "")
-                        .replaceAll("<strong>", ""),
+                    title,
                     textScaleFactor: textScaleFactor,
                     overflow: overflow,
                     maxLines: maxLine,

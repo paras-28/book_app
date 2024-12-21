@@ -80,7 +80,7 @@ class _ItemView extends StatelessWidget {
         child: Row(
           children: [
             TextView(
-              title: index.toString() ?? '',
+              title: index.toString(),
               style: AppTextStyle.imageTitle,
               margin: EdgeInsets.only(right: 8),
             ),
